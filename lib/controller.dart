@@ -8,4 +8,11 @@ class ProviderClass extends ChangeNotifier {
       notifyListeners();
 
   }
+  List<String>datas=[];
+  void textdata ({required String textcontroller})
+  {
+    datas.add(textcontroller);
+    notifyListeners();
+  }
 }
+

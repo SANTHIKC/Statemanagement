@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'controller.dart';
 
 class ProviderText1 extends StatefulWidget {
   const ProviderText1({Key? key}) : super(key: key);
@@ -23,14 +26,16 @@ class _ProviderText1State extends State<ProviderText1> {
               ),
             ),
             ElevatedButton(onPressed: (){
-
+             Provider.of<ProviderClass>(context,listen: false).textdata(textcontroller:textcontroller.text);
 
             }, child: Text("submit")),
-            ListView.builder(
-              itemCount: 10,
-              itemBuilder: (context,index) {
-                return Text(textcontroller.text);
-              }
+            Expanded(
+              child: ListView.builder(
+                itemCount:Provider.of<ProviderClass>(context).datas.length,
+                itemBuilder: (context,index) {
+                  return Text(Provider.of<ProviderClass>(context).datas[index]);
+                }
+              ),
             ),
           ],
         ),

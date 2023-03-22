@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class ProviderClass extends ChangeNotifier {
   int s=0;
@@ -14,5 +15,54 @@ class ProviderClass extends ChangeNotifier {
     datas.add(textcontroller);
     notifyListeners();
   }
+
+
+
+ String?mail1;
+  String?password1;
+
+  List<String>pasdata=[];
+  void maildata({required String mail, required String password})
+  {
+   mail1=mail;
+   password1=password;
+
+    notifyListeners();
+  }
+Color clrs=Colors.red;
+  int count=0;
+  counter()
+  {
+    count++;
+    if(count ==1)
+      {
+        clrs=Colors.cyan;
+      }
+    else
+      {
+        count=0;
+        clrs=Colors.red;
+      }
+    notifyListeners();
+  }
+
+  Brightness bright=Brightness.dark;
+  int b=0;
+  adding()
+  {
+    b++;
+    if(b ==1)
+    {
+      bright=Brightness.light;
+    }
+    else
+    {
+      b=0;
+      bright=Brightness.dark;
+    }
+    notifyListeners();
+  }
+
+
 }
 

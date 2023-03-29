@@ -47,7 +47,7 @@ class _MaildatasState extends State<Maildatas> {
                       mail: mailtextcontroller.text,
                       password: passwordtextcontroller.text);
                   Provider.of<ProviderClass>(context, listen: false).adding();
-                  Navigator.of(context).push(MaterialPageRoute(builder:(context) => Passdatamail(),));
+                  // Navigator.of(context).push(MaterialPageRoute(builder:(context) => Passdatamail(),));
                 },
                 child: Text("ok")),
           ),

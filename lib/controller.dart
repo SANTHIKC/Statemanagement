@@ -46,20 +46,14 @@ Color clrs=Colors.red;
     notifyListeners();
   }
 
-  Brightness bright=Brightness.dark;
-  int b=0;
-  adding()
+  Brightness bright=Brightness.light;
+
+ void adding()
+
   {
-    b++;
-    if(b ==1)
-    {
-      bright=Brightness.light;
-    }
-    else
-    {
-      b=0;
-      bright=Brightness.dark;
-    }
+
+       bright==Brightness.dark?Brightness.light:Brightness.dark;
+
     notifyListeners();
   }
 

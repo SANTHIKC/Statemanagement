@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:statemanagement/passdatasmail.dart';
 import 'package:statemanagement/providertext1.dart';
+import 'package:statemanagement/sharedprferance13.dart';
+import 'package:statemanagement/sheredpreferance12.dart';
+import 'package:statemanagement/userloginpage.dart';
 
 import 'colorchange.dart';
 import 'controller.dart';
@@ -10,6 +13,7 @@ import 'maildatas.dart';
 
 void main() {
   runApp( ChangeNotifierProvider(create: (BuildContext context) {
+    return ProviderClass();
 
   },
   child: MyApp()));
@@ -36,7 +40,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         brightness: Provider.of<ProviderClass>(context).bright,
       ),
-      home: Maildatas(),
+      home: UserLoginpage(),
     );
   }
 }

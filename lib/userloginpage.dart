@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:statemanagement/userloginpage2.dart';
 
 class UserLoginpage extends StatefulWidget {
   const UserLoginpage({Key? key}) : super(key: key);
@@ -10,6 +12,8 @@ class UserLoginpage extends StatefulWidget {
 class _UserLoginpageState extends State<UserLoginpage> {
   TextEditingController usernametextediting=TextEditingController();
   TextEditingController passwordtextediting=TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +34,11 @@ class _UserLoginpageState extends State<UserLoginpage> {
                 decoration: InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.circular(20))),
               ),
             ),
-            ElevatedButton(onPressed: (){}, child: Text("submit"))
+            ElevatedButton(onPressed: ()async{
+              SharedPreferences sharedpref=await SharedPreferences.getInstance();
+              sharedpref.setBool("isLogged", true);
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => Userlogingpage2(),));
+            }, child: Text("submit"))
           ],
         ),
       ),

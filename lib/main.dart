@@ -1,26 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:statemanagement/passdatasmail.dart';
 import 'package:statemanagement/providertext1.dart';
 import 'package:statemanagement/sharedprferance13.dart';
 import 'package:statemanagement/sheredpreferance12.dart';
 import 'package:statemanagement/userloginpage.dart';
+import 'package:statemanagement/userloginpage2.dart';
 
 import 'colorchange.dart';
 import 'controller.dart';
 import 'countprovider.dart';
 import 'maildatas.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences sharedpref = await SharedPreferences.getInstance();
+  bool?isligged=await sharedpref.getBool("isLogged");
   runApp( ChangeNotifierProvider(create: (BuildContext context) {
     return ProviderClass();
 
   },
-  child: MyApp()));
+  child: MyApp(isLogged:isligged,)));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  var isLogged;
+   MyApp({required this.isLogged});
 
   // This widget is the root of your application.
   @override
@@ -40,7 +46,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         brightness: Provider.of<ProviderClass>(context).bright,
       ),
-      home: UserLoginpage(),
+      home:isLogged == false? UserLoginpage() : isLogged == null ? UserLoginpage() :Userlogingpage2(),
     );
   }
 }
